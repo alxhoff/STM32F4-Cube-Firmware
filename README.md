@@ -1,63 +1,44 @@
-# STM32F4-Cube-Firmware
-A clone of the STM32F4 Firmware, version 1.21.0. Used in the automated testing of STM32 projects.
+# STM32CubeF4 MCU Firmware Package
 
-## Example use
+**STM32Cube** is an STMicroelectronics original initiative to ease the developers life by reducing efforts, time and cost.
 
-See [here](https://github.com/alxhoff/STM32-Mechanical-Keyboard) for complete example.
+**STM32Cube** covers the overall STM32 products portfolio. It includes a comprehensive embedded software platform (this repo), delivered for each series (such as the STM32CubeF4 for the STM32F4 series).
+   * The CMSIS modules (core and device) corresponding to the ARM-tm core implemented in this STM32 product
+   * The STM32 HAL-LL drivers : an abstraction drivers layer, the API ensuring maximized portability across the STM32 portfolio 
+   * The BSP Drivers of each evaluation or demonstration board provided by this STM32 series 
+   * A consistent set of middlewares components such as RTOS, USB, FatFS, LwIP, Graphics ...
+   * A full set of software projects (basic examples, applications or demonstrations) for each board provided by this STM32 series
+   
+The **STM32CubeF4 MCU Package** projects are directly running on the STM32F4 series boards. You can find in each Projects/*Board name* directories a set of software projects (Applications/Demonstration/Examples) 
 
-``` cmake 
-PROJECT(esp32_keyboard)
+In this FW Package, the modules **Middlewares/ST/TouchGFX** **Middlewares/ST/STemWin** **Middlewares/ST/STM32_Audio** are not directly accessible. They must be downloaded from a ST server, the respective URL are available in a readme.txt file inside each module.
 
-set(CMAKE_BUILD_TYPE Debug)
-CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
-ENABLE_LANGUAGE(ASM)
+## Boards available
+  * STM32F4 
+    * [STM32F4-Discovery](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-discovery-kits/stm32f4discovery.html)
+    * STM32F401-Discovery
+    * [STM32F401RE-Nucleo](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-f401re.html)
+    * [STM32F410xx-Nucleo](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-f410rb.html)
+    * [STM32F411E-Discovery](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-discovery-kits/32f411ediscovery.html)
+    * [STM32F411RE-Nucleo](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-f411re.html)
+    * [STM32F412G-Discovery](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-discovery-kits/32f412gdiscovery.html)
+    * [STM32F412ZG-Nucleo](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-f412zg.html)
+    * [STM32F413H-Discovery](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-discovery-kits/32f413hdiscovery.html)
+    * [STM32F413ZH-Nucleo](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-f413zh.html)
+    * [STM32F429I-Discovery](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-discovery-kits/32f429idiscovery.html)
+    * [STM32F429ZI-Nucleo](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-f429zi.html)
+    * [STM32F446ZE-Nucleo](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-f446ze.html)
+    * [STM32429I_EVAL](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-eval-boards/stm32429i-eval.html)
+	* [STM32439I_EVAL](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-eval-boards/stm32439i-eval.html)
+    * [STM3240G_EVAL](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-eval-boards/stm3240g-eval.html)
+    * [STM3241G_EVAL](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-eval-boards/stm3241g-eval.html) 
+    * [STM32446E_EVAL](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-eval-boards/stm32446e-eval.html)
+    * [STM32446E-Nucleo](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-f446re.html)
+    * [STM32469I_EVAL](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-eval-boards/stm32479i-eval.html)
+    * [STM32469I-Discovery](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-discovery-kits/32f469idiscovery.html)
+	
+## Troubleshooting
 
-# Remove -rdynamic option from linking that is not supported by arm-none-eabi
-# Also remove "undefined reference to `_sbrk'" error
-set(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS "-specs=nano.specs -specs=nosys.specs")
-set(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS "")
+**Caution** : The **Issues** requests are strictly limited to submit problems or suggestions related to the software delivered in this repo 
 
-set(STM32_CHIP STM32F429ZIT)
-set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
-
-FIND_PACKAGE(Git REQUIRED)
-set(CUBE_SOURCE "${CMAKE_BINARY_DIR}/STM32F4-Cube-Firmware")
-if(EXISTS ${CUBE_SOURSE})
-    message("Cube FW directory exists")
-else()
-    message("Getting Cube Firmware")
-    set(GIT_REPOSITORY "https://github.com/alxhoff/STM32F4-Cube-Firmware.git")
-    execute_process(COMMAND ${GIT_EXECUTABLE} clone ${GIT_REPOSITORY} )
-endif()
-
-set(STM32Cube_DIR ${CUBE_SOURCE})
-
-FIND_PACKAGE(CMSIS REQUIRED)
-FIND_PACKAGE(STM32HAL COMPONENTS adc cortex dma eth flash flash_ramfunc gpio i2c pcd rcc tim uart REQUIRED)
-FIND_PACKAGE(STM32LL COMPONENTS usb REQUIRED)
-FIND_PACKAGE(USBDevice COMPONENTS HID REQUIRED)
-
-SET(FREERTOS_HEAP_IMPL 4)
-FIND_PACKAGE(FreeRTOS)
-
-INCLUDE_DIRECTORIES(
-    ${CMAKE_CURRENT_SOURCE_DIR}
-    "${PROJECT_SOURCE_DIR}/Inc"
-    ${USBDevice_INCLUDE_DIR}
-    ${CMSIS_INCLUDE_DIRS}
-    ${STM32HAL_INCLUDE_DIR}
-    ${STM32LL_INCLUDE_DIR}
-    ${FreeRTOS_INCLUDE_DIRS}
-    )
-
-file(GLOB PROJECT_SOURCES "Src/*.c")
-
-SET(STM32_LINKER_SCRIPT ${CMSIS_LINKER_SCRIPT})
-
-ADD_EXECUTABLE(${CMAKE_PROJECT_NAME} ${PROJECT_SOURCES} ${STM32HAL_SOURCES} ${STM32LL_SOURCES} ${FreeRTOS_SOURCES} ${USBDevice_SOURCES} ${CMSIS_SOURCES})
-
-STM32_SET_TARGET_PROPERTIES(${CMAKE_PROJECT_NAME})
-STM32_ADD_HEX_BIN_TARGETS(${CMAKE_PROJECT_NAME})
-STM32_PRINT_SIZE_OF_TARGETS(${CMAKE_PROJECT_NAME})
-
-```
+**For any other question** related to the STM32F4 product, the hardware performance, the hardware characteristics, the tools, the environment, you can submit a topic on the [ST Community/STM32 MCUs forum](https://community.st.com/s/group/0F90X000000AXsASAW/stm32-mcus)

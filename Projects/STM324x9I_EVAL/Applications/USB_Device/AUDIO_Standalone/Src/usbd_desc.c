@@ -129,7 +129,10 @@ __ALIGN_BEGIN uint8_t USBD_LangIDDesc[USB_LEN_LANGID_STR_DESC] __ALIGN_END = {
 };
 
 
-uint8_t USBD_StringSerial[USB_SIZ_STRING_SERIAL] = {
+#if defined ( __ICCARM__ ) /*!< IAR Compiler */
+  #pragma data_alignment=4   
+#endif
+__ALIGN_BEGIN uint8_t USBD_StringSerial[USB_SIZ_STRING_SERIAL] __ALIGN_END = {
   USB_SIZ_STRING_SERIAL,
   USB_DESC_TYPE_STRING,
 };
@@ -151,6 +154,9 @@ static void Get_SerialNum(void);
   */
 uint8_t *USBD_AUDIO_DeviceDescriptor(USBD_SpeedTypeDef speed, uint16_t * length)
 {
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(speed);
+
   *length = sizeof(USBD_DeviceDesc);
   return (uint8_t *) USBD_DeviceDesc;
 }
